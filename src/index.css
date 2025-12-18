@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, trustworthy cream background */
+    --background: 40 30% 98%;
+    --foreground: 220 25% 12%;
+
+    /* Card surfaces */
+    --card: 40 25% 99%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 40 25% 99%;
+    --popover-foreground: 220 25% 12%;
+
+    /* Primary: Teal/Emerald for trust and growth */
+    --primary: 168 65% 38%;
+    --primary-foreground: 40 30% 98%;
+
+    /* Secondary: Soft sage */
+    --secondary: 160 25% 92%;
+    --secondary-foreground: 168 50% 25%;
+
+    /* Muted: Warm gray */
+    --muted: 40 15% 93%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Accent: Warm amber for achievements */
+    --accent: 38 92% 55%;
+    --accent-foreground: 38 90% 15%;
+
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 168 65% 38%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for PROOF */
+    --growth-start: 168 65% 38%;
+    --growth-end: 38 92% 55%;
+    --skill-blue: 210 80% 55%;
+    --skill-purple: 270 65% 55%;
+    --skill-pink: 330 70% 55%;
+    --skill-orange: 25 95% 55%;
+    --confidence-high: 160 60% 45%;
+    --confidence-medium: 45 90% 50%;
+    --confidence-low: 15 80% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 40 25% 97%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 168 65% 38%;
+    --sidebar-primary-foreground: 40 30% 98%;
+    --sidebar-accent: 160 25% 92%;
+    --sidebar-accent-foreground: 168 50% 25%;
+    --sidebar-border: 40 20% 88%;
+    --sidebar-ring: 168 65% 38%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 25% 10%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 25% 10%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 168 55% 50%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 168 40% 70%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 38 85% 55%;
+    --accent-foreground: 38 90% 10%;
+
+    --destructive: 0 65% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 168 55% 50%;
+
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 168 55% 50%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 168 40% 70%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 168 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .gradient-growth {
+    background: linear-gradient(135deg, hsl(var(--growth-start)) 0%, hsl(var(--growth-end)) 100%);
+  }
+
+  .gradient-text-growth {
+    background: linear-gradient(135deg, hsl(var(--growth-start)) 0%, hsl(var(--growth-end)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.4);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 40px -10px hsl(var(--accent) / 0.4);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .animate-grow {
+    animation: grow 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}

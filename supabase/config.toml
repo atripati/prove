@@ -1,0 +1,7 @@
+project_id = "sgmbprhijgflfchgpbpf"
+
+[functions.analyze-learning]
+verify_jwt = true
+
+[functions.run-python]
+verify_jwt = false
