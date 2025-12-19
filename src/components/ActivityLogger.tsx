@@ -9,8 +9,10 @@ import { useActivities, Activity, LearningSignals } from "@/hooks/useActivities"
 import { useSkills } from "@/hooks/useSkills";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { CodeSession, LearningSignals as CodeLearningSignals } from "@/components/CodeSession";
-import { WritingSession, WritingSignals } from "@/components/WritingSession";
+import { CodingSpace } from "@/components/coding/CodingSpace";
+import { WritingSpace } from "@/components/writing/WritingSpace";
+import { CodingSignals } from "@/lib/signals/codingSignalExtractor";
+import { WritingSignals } from "@/lib/signals/writingSignalExtractor";
 
 const activityTypes = [
   { value: "code", label: "Code Work", icon: Code },
@@ -70,7 +72,7 @@ export function ActivityLogger({ onActivityAdded }: ActivityLoggerProps) {
 
   const handleCodeSessionFinish = (data: {
     code: string;
-    signals: CodeLearningSignals;
+    signals: CodingSignals;
     suggestedTitle: string;
     suggestedDescription: string;
   }) => {
@@ -250,7 +252,7 @@ export function ActivityLogger({ onActivityAdded }: ActivityLoggerProps) {
           <Plus className="w-4 h-4" />
           Log Activity
         </Button>
-        <CodeSession
+        <CodingSpace
           onFinish={handleCodeSessionFinish}
           onCancel={handleSessionCancel}
         />
@@ -265,7 +267,7 @@ export function ActivityLogger({ onActivityAdded }: ActivityLoggerProps) {
           <Plus className="w-4 h-4" />
           Log Activity
         </Button>
-        <WritingSession
+        <WritingSpace
           onFinish={handleWritingSessionFinish}
           onCancel={handleSessionCancel}
         />
